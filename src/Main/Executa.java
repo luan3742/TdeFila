@@ -28,9 +28,15 @@ public class Executa {
         System.out.println(f1);
         System.out.println("Elemento do topo: "+f1.primeiro());
         
+        
+        System.out.println("");
       
+        System.out.println(f1);
         
+        System.out.println("Ultimo elemento: "+f1.ultimo());
         
+        System.out.println("");
+        System.out.println(f1.vazia());
         
         
         

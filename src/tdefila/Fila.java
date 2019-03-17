@@ -36,7 +36,9 @@ public class Fila {
     
     public void cheia(){
         if(this.max == this.dado.length){
-            System.out.println("A fila esta cheia");
+            System.out.println("A Fila esta cheia");
+        } else{
+            System.out.println("A Fila não esta cheia");
         }
     }
     
@@ -55,8 +57,8 @@ public class Fila {
         return this.dado[0];
     }
     
-    public void ultimo(){
-        int ultimo = this.dado[this.max --];
+    public Object ultimo(){
+        return this.dado[--max];
     }
     
     public Object remove() {
