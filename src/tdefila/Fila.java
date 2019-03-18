@@ -13,78 +13,101 @@ import java.util.Arrays;
  */
 public class Fila {
 
-
-    private int remove;
     private int max = 0;
-    private int dado[];
+    public int dado[];
 
     public Fila(int tamanhoFila) {
         this.dado = new int[tamanhoFila];
-        this.remove = 0;
     }
 
-    Fila() {
-        this(3);
-    }
-
-    public void insere(Fila f, int elemento) {
+    public void insere(int elemento) {
         if (this.max < this.dado.length) {
             this.dado[this.max] = elemento;
             this.max++;
         }
     }
-    
-    public void cheia(){
-        if(this.max == this.dado.length){
+
+    public static Fila merge(Fila filaA, Fila filaB) {
+        Fila filaC = new Fila(filaA.dado.length + filaB.dado.length);
+
+        int proximoA = 0;
+        int proximoB = 0;
+        int proximoC = 0;
+
+        while (proximoA < filaA.dado.length && proximoB < filaB.dado.length) {
+            if (filaA.dado[proximoA] <= filaB.dado[proximoB]) {
+                filaC.dado[proximoC++] = filaA.dado[proximoA++];
+            } else {
+                filaC.dado[proximoC++] = filaB.dado[proximoB++];
+            }
+        }
+
+        while (proximoA < filaA.dado.length) {
+            filaC.dado[proximoC++] = filaA.dado[proximoA++];
+        }
+
+        while (proximoB < filaB.dado.length) {
+            filaC.dado[proximoC++] = filaB.dado[proximoB++];
+        }
+
+        return filaC;
+
+    }
+
+    public void mostrarElementosDaFila() {
+        for (int elemento : dado) {
+            System.out.print(elemento + " ");
+        }
+        System.out.println();
+    }
+
+    public void cheia() {
+        if (this.max == this.dado.length) {
             System.out.println("A Fila esta cheia");
-        } else{
+        } else {
             System.out.println("A Fila não esta cheia");
         }
     }
-    
-    public boolean vazia( ){
-        if(this.max == 0){
+
+    public boolean vazia() {
+        if (this.max == 0) {
             return true;
         }
         return false;
     }
-    
-    public Object primeiro(){
-        if (this.vazia()){
+
+    public Object primeiro() {
+        if (this.vazia()) {
             return "A fila esta vazia !";
         }
-        
+
         return this.dado[0];
     }
-    
-    public Object ultimo(){
+
+    public Object ultimo() {
         return this.dado[--max];
     }
-    
+
     public Object remove() {
         int pos = 0;
         int removeElemento = this.dado[pos];
 
         for (int i = pos; i < this.max - 1; i++) {
-            dado[i] = dado[i+1];
+            dado[i] = dado[i + 1];
         }
         this.max--;
-        
+
         return removeElemento;
-        
+
     }
-    
-    
+
+    public void mergeFilas() {
+
+    }
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        
-        for (int i = 0; i <this.max; i++) {
-           s.append(this.dado[i]);
-           s.append(" ");
-        }
-        return s.toString();
-        
+        return Arrays.toString(this.dado);
     }
+
 }
