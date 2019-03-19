@@ -41,7 +41,8 @@ public class Fila {
                 filaC.dado[proximoC++] = filaB.dado[proximoB++];
             }
         }
-
+        
+        
         while (proximoA < filaA.dado.length) {
             filaC.dado[proximoC++] = filaA.dado[proximoA++];
         }
@@ -89,10 +90,14 @@ public class Fila {
     }
 
     public Object remove() {
-        int pos = 0;
-        int removeElemento = this.dado[pos];
+        
+        if(vazia()){
+            return "Fila vazia, não há como remover";
+        }
+        
+        int removeElemento = this.dado[0];
 
-        for (int i = pos; i < this.max - 1; i++) {
+        for (int i = 0; i < this.max; i++) {
             dado[i] = dado[i + 1];
         }
         this.max--;
@@ -101,13 +106,19 @@ public class Fila {
 
     }
 
-    public void mergeFilas() {
-
-    }
+    
 
     @Override
     public String toString() {
-        return Arrays.toString(this.dado);
+        StringBuilder s = new StringBuilder();
+        
+        for (int i = 0; i <this.max; i++) {
+           s.append(this.dado[i]);
+           s.append(" ");
+        }
+        return s.toString();
+        
+        
     }
 
 }

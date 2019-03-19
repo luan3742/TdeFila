@@ -13,21 +13,25 @@ public class Executa {
 
         Fila filaA = new Fila(4);
         Fila filaB = new Fila(5);
-
-        filaA.insere(2);
-        filaA.insere(4);
-        filaA.insere(5);
-        filaA.insere(6);
-
-        filaB.insere(9);
-        filaB.insere(1);
-        filaB.insere(10);
-        filaB.insere(3);
-        filaB.insere(12);
         
-        Fila filaMergeada = Fila.merge(filaA, filaB);
+        
+        filaA.insere(5);
+        filaA.insere(3);
+        filaA.insere(2);
+        
+        System.out.println(filaA.toString());
+        System.out.println("");
+        System.out.println("Elemento removido: "+filaA.remove());
+        System.out.println("");
+        System.out.println("Novos elementos: "+filaA.toString());
+        System.out.println("");
+        System.out.println("Elemento removido: "+filaA.remove());
+        System.out.println("");
+        System.out.println("Novos elementos:" +filaA.toString());
+        
 
-        filaMergeada.mostrarElementosDaFila();
+        
+
 
     }
 
