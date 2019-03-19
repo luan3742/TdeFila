@@ -27,39 +27,11 @@ public class Fila {
         }
     }
 
-    public static Fila merge(Fila filaA, Fila filaB) {
-        Fila filaC = new Fila(filaA.dado.length + filaB.dado.length);
-
-        int proximoA = 0;
-        int proximoB = 0;
-        int proximoC = 0;
-
-        while (proximoA < filaA.dado.length && proximoB < filaB.dado.length) {
-            if (filaA.dado[proximoA] <= filaB.dado[proximoB]) {
-                filaC.dado[proximoC++] = filaA.dado[proximoA++];
-            } else {
-                filaC.dado[proximoC++] = filaB.dado[proximoB++];
-            }
-        }
-        
-        
-        while (proximoA < filaA.dado.length) {
-            filaC.dado[proximoC++] = filaA.dado[proximoA++];
-        }
-
-        while (proximoB < filaB.dado.length) {
-            filaC.dado[proximoC++] = filaB.dado[proximoB++];
-        }
-
-        return filaC;
-
-    }
-
     public void mostrarElementosDaFila() {
         for (int elemento : dado) {
             System.out.print(elemento + " ");
         }
-        System.out.println();
+        System.out.println("");
     }
 
     public void cheia() {
@@ -90,35 +62,61 @@ public class Fila {
     }
 
     public Object remove() {
-        
-        if(vazia()){
-            return "Fila vazia, não há como remover";
+
+        if (vazia()) {
+            System.out.println(" Fila vazia, não há como remover");
         }
-        
+
         int removeElemento = this.dado[0];
 
+        this.max--;
         for (int i = 0; i < this.max; i++) {
             dado[i] = dado[i + 1];
         }
-        this.max--;
+
+        this.dado[this.max] = 0;
 
         return removeElemento;
 
     }
 
-    
-
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        
-        for (int i = 0; i <this.max; i++) {
-           s.append(this.dado[i]);
-           s.append(" ");
+
+        for (int i = 0; i < this.max; i++) {
+            s.append(this.dado[i]);
+            s.append(" ");
         }
         return s.toString();
-        
-        
+
+    }
+
+    public static Fila merge(Fila filaA, Fila filaB) {
+        Fila filaC = new Fila(filaA.dado.length + filaB.dado.length);
+
+        int proximoA = 0;
+        int proximoB = 0;
+        int proximoC = 0;
+
+        while (proximoA < filaA.dado.length && proximoB < filaB.dado.length) {
+            if (filaA.dado[proximoA] <= filaB.dado[proximoB]) {
+                filaC.dado[proximoC++] = filaA.dado[proximoA++];
+            } else {
+                filaC.dado[proximoC++] = filaB.dado[proximoB++];
+            }
+        }
+
+        while (proximoA < filaA.dado.length) {
+            filaC.dado[proximoC++] = filaA.dado[proximoA++];
+        }
+
+        while (proximoB < filaB.dado.length) {
+            filaC.dado[proximoC++] = filaB.dado[proximoB++];
+        }
+
+        return filaC;
+
     }
 
 }

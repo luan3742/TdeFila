@@ -10,28 +10,24 @@ import tdefila.Fila;
 public class Executa {
 
     public static void main(String[] args) {
-
         Fila filaA = new Fila(4);
-        Fila filaB = new Fila(5);
-        
-        
-        filaA.insere(5);
-        filaA.insere(3);
+
         filaA.insere(2);
-        
-        System.out.println(filaA.toString());
-        System.out.println("");
-        System.out.println("Elemento removido: "+filaA.remove());
-        System.out.println("");
-        System.out.println("Novos elementos: "+filaA.toString());
-        System.out.println("");
-        System.out.println("Elemento removido: "+filaA.remove());
-        System.out.println("");
-        System.out.println("Novos elementos:" +filaA.toString());
-        
+        filaA.insere(6);
+        filaA.insere(8);
+        filaA.insere(64);
 
-        
+        Fila filaB = new Fila(5);
 
+        filaB.insere(5);
+        filaB.insere(15);
+        filaB.insere(23);
+        filaB.insere(55);
+        filaB.insere(56);
+
+        Fila filaMergeada = Fila.merge(filaA, filaB);
+
+        filaMergeada.mostrarElementosDaFila();
 
     }
 
