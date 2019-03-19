@@ -63,12 +63,13 @@ public class Fila {
 
         int removeElemento = this.dado[0];
 
+                
+        
         this.max--;
         for (int i = 0; i < this.max; i++) {
             dado[i] = dado[i + 1];
         }
 
-        this.dado[this.max] = 0;
 
         return removeElemento;
 
