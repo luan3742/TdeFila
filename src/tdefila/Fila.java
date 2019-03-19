@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tdefila;
 
 import java.util.Arrays;
 
-/**
- *
- * @author Luan
- */
+
 public class Fila {
 
     private int max = 0;
@@ -34,11 +26,11 @@ public class Fila {
         System.out.println("");
     }
 
-    public void cheia() {
+    public boolean cheia() {
         if (this.max == this.dado.length) {
-            System.out.println("A Fila esta cheia");
+            return true;
         } else {
-            System.out.println("A Fila não esta cheia");
+            return false;
         }
     }
 
@@ -50,12 +42,14 @@ public class Fila {
     }
 
     public Object primeiro() {
-        if (this.vazia()) {
+        if (this.max == 0) {
             return "A fila esta vazia !";
         }
-
-        return this.dado[0];
+        else{
+            return this.dado[0];
+        }
     }
+        
 
     public Object ultimo() {
         return this.dado[--max];
@@ -93,13 +87,13 @@ public class Fila {
     }
 
     public static Fila merge(Fila filaA, Fila filaB) {
-        Fila filaC = new Fila(filaA.dado.length + filaB.dado.length);
+        Fila filaC = new Fila(filaA.max + filaB.max);
 
         int proximoA = 0;
         int proximoB = 0;
         int proximoC = 0;
 
-        while (proximoA < filaA.dado.length && proximoB < filaB.dado.length) {
+        while (proximoA < filaA.max && proximoB < filaB.max) {
             if (filaA.dado[proximoA] <= filaB.dado[proximoB]) {
                 filaC.dado[proximoC++] = filaA.dado[proximoA++];
             } else {
@@ -107,11 +101,11 @@ public class Fila {
             }
         }
 
-        while (proximoA < filaA.dado.length) {
+        while (proximoA < filaA.max) {
             filaC.dado[proximoC++] = filaA.dado[proximoA++];
         }
 
-        while (proximoB < filaB.dado.length) {
+        while (proximoB < filaB.max) {
             filaC.dado[proximoC++] = filaB.dado[proximoB++];
         }
 
